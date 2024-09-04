@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import "./assets/css/popup.css";
+import ScreenRecorder from "./screeRecoder";
 
 function App() {
+  const [data, setData] = useState();
+  useEffect(() => {
+    fetch("https://icanhazdadjoke.com/slack")
+      .then((data) => data.json())
+      .then((jokeData) => {
+        const jokeText = jokeData.attachments[0].text;
+        setData(jokeText);
+      });
+  }, []);
+  // const startRecording = () => {
+  //   chrome.runtime.sendMessage({ type: 'startRecording' });
+  // };
+
+  // const stopRecording = () => {
+  //   chrome.runtime.sendMessage({ type: 'stopRecording' });
+  // };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <p>{data}</p>
+      {/* <button onClick={startRecording}>Start Recording</button> */}
+      {/* <button onClick={stopRecording}>Stop Recording</button> */}
+          </>
   );
 }
 

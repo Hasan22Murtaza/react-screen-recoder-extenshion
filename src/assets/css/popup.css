@@ -1,0 +1,11 @@
+p {
+    display: inner-flex;
+    margin: auto;
+    font-size: 22px;
+    color: blue;
+    border-radius: 6px;
+    border: 1px solid lightblue;
+    padding: 10px;
+    margin-top: 10%;
+    width: 40%;
+}
